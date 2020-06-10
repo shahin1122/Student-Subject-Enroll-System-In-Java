@@ -1,0 +1,94 @@
+package studentdatabaseapp;
+import java.util.Scanner;
+
+public class student {
+	private String firstName;
+	private String lastName;
+	private int gradeYear;
+	private String studentID;
+	private String courses ;
+	private int tutionBalance= 0;
+	static private int costOfCourses = 600 ;
+	static private int id = 1000 ;
+	
+	public student() {
+		Scanner input = new Scanner(System.in);
+		System.out.println("ENTER FIRST NAME: ");
+		this.firstName = input.next();
+		
+		System.out.println("ENTER LAST NAME: ");
+		this.lastName = input.next();
+		
+		System.out.print("1.FIRST YEAR : \n2.SECOND YEAR: \n3.THIRD YEAR: \n4: FOURTH YEAR: ");
+		
+		this.gradeYear = input.nextInt();
+		setstudentID();
+		
+		System.out.println(firstName +" "+ lastName +" "+gradeYear+" "+studentID);
+		
+		System.out.println("\n\\n");
+		
+		
+		
+		
+	}
+	
+	private void setstudentID() {
+		
+		id++;
+		this.studentID = gradeYear +""+id ;
+		
+		
+		
+	}
+	public void enroll() {
+		do {
+			System.out.println("WHICH COURSE YOU WANT TO ENROLL( If nat press q ): ");
+			Scanner input = new Scanner(System.in);
+			String course = input.nextLine();
+			if(!course.equalsIgnoreCase("Q")) {
+				
+				courses = courses + "\n" + course;
+				tutionBalance = tutionBalance + costOfCourses ;
+				
+				
+			}else {break;}
+			
+		}while(1 !=0);
+		
+			
+		
+		System.out.println("BELLOW YOUR ENROLLED SUBJECTS : ");
+		
+		
+		
+	}
+	
+	public void viewBalance() {
+		System.out.println("YOUR DUE BALANCE FEE IS:  "+tutionBalance+"$ ONLY! ");
+		
+		
+		
+	}
+	
+	public void payTution() {
+		
+		viewBalance();
+		Scanner input = new Scanner(System.in);
+		System.out.println("HOW MUCH YOU WANT TO PAY: ");
+		int payment = input.nextInt();
+		tutionBalance = tutionBalance - payment;
+		System.out.println("THANKS FOR YOUR PAYMENT: "+ payment);
+		viewBalance(); 
+		
+		
+		
+	}
+	
+	public String showInfo() {
+		return "Thank you "+ firstName +" "+ lastName + "\nYOUR COURSES ARE ENROLLED!! "+ courses +"\nSTUDYING YEAR: "+gradeYear+"\nStudent ID: "+ studentID+"\nBALANCE DUE: "+ tutionBalance ;
+	}
+	
+	
+
+}
